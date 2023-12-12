@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from math import floor
+import math
 """function that gives floor of a float"""
 
 
-def floor(n: floor) -> int:
-    """return the floor"""
-    return floor(n)
+def floor(n: float) -> int:
+    """return floor of n"""
+    return math.floor(n)
