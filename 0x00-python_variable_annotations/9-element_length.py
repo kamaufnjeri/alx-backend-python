@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""use annotations for this function"""
+"""use annotations for this function."""
 from typing import List, Tuple, Sequence, Iterable
 
 
