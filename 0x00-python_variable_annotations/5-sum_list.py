@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""complex floats. List with floats"""
+"""complex floats. List with floats."""
 from typing import List
 
 
