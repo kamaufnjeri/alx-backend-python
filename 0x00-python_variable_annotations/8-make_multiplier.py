@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""returns a function multiplied by multiplier"""
+"""returns a function multiplied by multiplier."""
 from typing import Callable
 
 
