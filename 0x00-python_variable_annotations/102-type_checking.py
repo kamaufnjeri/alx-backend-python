@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""using mypy"""
+"""using mypy."""
 from typing import Tuple, List
 
 
