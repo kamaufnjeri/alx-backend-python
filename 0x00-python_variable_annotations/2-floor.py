@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""function that gives floor of a float"""
+"""function that gives floor of a float."""
 import math
 
 
