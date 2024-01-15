@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""using async and await"""
+"""using async and await."""
 import asyncio
 import random
 
