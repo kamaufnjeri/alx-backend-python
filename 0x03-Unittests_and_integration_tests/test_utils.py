@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Module for testing utility functions """
+""" Module for testing utils """
 
 from parameterized import parameterized
 import unittest
@@ -9,7 +9,7 @@ import requests
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    """ Class for Testing Access Nested Map Function """
+    """ Class for Testing Access Nested Map """
 
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
@@ -17,24 +17,22 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, nested_map, path, expected):
-        """ Test that the access_nested_map
-        function returns the expected result
-        """
+        """ Test that the method returns what it is supposed to """
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
         ({}, ("a",), 'a'),
         ({"a": 1}, ("a", "b"), 'b')
     ])
-    def test_access_nested_map_exception(self, nested_map, path, expected_key):
+    def test_access_nested_map_exception(self, nested_map, path, expected):
         """ Test that a KeyError is raised for the respective inputs """
         with self.assertRaises(KeyError) as e:
             access_nested_map(nested_map, path)
-        self.assertEqual(f"KeyError('{expected_key}')", repr(e.exception))
+        self.assertEqual(f"KeyError('{expected}')", repr(e.exception))
 
 
 class TestGetJson(unittest.TestCase):
-    """ Class for Testing Get Json Function """
+    """ Class for Testing Get Json """
 
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
@@ -44,14 +42,14 @@ class TestGetJson(unittest.TestCase):
         """ Test that utils.get_json returns the expected result."""
         config = {'return_value.json.return_value': test_payload}
         patcher = patch('requests.get', **config)
-        mock_requests_get = patcher.start()
+        mock = patcher.start()
         self.assertEqual(get_json(test_url), test_payload)
-        mock_requests_get.assert_called_once()
+        mock.assert_called_once()
         patcher.stop()
 
 
 class TestMemoize(unittest.TestCase):
-    """ Class for Testing Memoize Decorator """
+    """ Class for Testing Memoize """
 
     def test_memoize(self):
         """ Test that when calling a_property twice, the correct result
@@ -69,8 +67,8 @@ class TestMemoize(unittest.TestCase):
             def a_property(self):
                 return self.a_method()
 
-        with patch.object(TestClass, 'a_method') as mock_a_method:
-            test_instance = TestClass()
-            test_instance.a_property()
-            test_instance.a_property()
-            mock_a_method.assert_called_once()
+        with patch.object(TestClass, 'a_method') as mock:
+            test_class = TestClass()
+            test_class.a_property()
+            test_class.a_property()
+            mock.assert_called_once()
